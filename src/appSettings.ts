@@ -6,8 +6,10 @@
  *
  */
 
-const hostName = window.location.hostname;
+const isBrowser = typeof window !== 'undefined';
+const hostName = isBrowser ? window.location.hostname : '';
 export const isDevPlayground: boolean =
+  isBrowser &&
   hostName !== 'playground.lexical.dev' &&
   hostName !== 'lexical-playground.vercel.app';
 
@@ -36,7 +38,7 @@ export const DEFAULT_SETTINGS = {
 } as const;
 
 // These are mutated in setupEnv
-export const INITIAL_SETTINGS: Record<SettingName, boolean> = {
+export const INITIAL_SETTINGS: Record = {
   ...DEFAULT_SETTINGS,
 };
 

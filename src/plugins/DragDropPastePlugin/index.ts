@@ -29,15 +29,12 @@ export default function DragDropPaste(): null {
       DRAG_DROP_PASTE,
       (files) => {
         (async () => {
-          const filesResult = await mediaFileReader(
-            files,
-            [ACCEPTABLE_IMAGE_TYPES].flatMap((x) => x),
-          );
-          for (const {file, result} of filesResult) {
+          for (const file of files) {
             if (isMimeType(file, ACCEPTABLE_IMAGE_TYPES)) {
+              const blobUrl = URL.createObjectURL(file);
               editor.dispatchCommand(INSERT_IMAGE_COMMAND, {
                 altText: file.name,
-                src: result,
+                src: blobUrl,
               });
             }
           }

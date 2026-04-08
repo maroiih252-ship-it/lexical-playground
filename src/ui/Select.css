@@ -6,7 +6,7 @@
  *
  */
 
-select {
+.sipas-editor select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -23,13 +23,13 @@ select {
   outline: none;
 }
 
-:root {
+.sipas-editor {
   --select-border: #393939;
   --select-focus: #101484;
   --select-arrow: var(--select-border);
 }
 
-.select {
+.sipas-editor .select {
   min-width: 10.667em;
   max-width: 19.333em;
   border: 0.067em solid var(--select-border);

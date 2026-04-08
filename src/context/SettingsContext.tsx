@@ -24,10 +24,10 @@ import {DEFAULT_SETTINGS, INITIAL_SETTINGS} from '../appSettings';
 
 type SettingsContextShape = {
   setOption: (name: SettingName, value: boolean) => void;
-  settings: Record<SettingName, boolean>;
+  settings: Record;
 };
 
-const Context: React.Context<SettingsContextShape> = createContext({
+const Context: React.Context = createContext({
   setOption: (name: SettingName, value: boolean) => {
     return;
   },
@@ -38,7 +38,7 @@ export const SettingsContext = ({
   children,
   settingProps = INITIAL_SETTINGS,
 }: {
-  settingProps?: Partial<Settings>;
+  settingProps?: Partial;
   children: ReactNode;
 }): JSX.Element => {
   const [settings, setSettings] = useState(
@@ -57,7 +57,7 @@ export const SettingsContext = ({
     if (!settingProps) {
       return;
     }
-    setSettings((ss) => merge(INITIAL_SETTINGS, ss, settingProps, ));
+    setSettings((ss) => merge(INITIAL_SETTINGS, ss, settingProps));
   }, [settingProps]);
 
   const contextValue = useMemo(() => {
@@ -72,6 +72,7 @@ export const useSettings = (): SettingsContextShape => {
 };
 
 function setURLParam(param: SettingName, value: null | boolean) {
+  if (typeof window === 'undefined') return;
   const url = new URL(window.location.href);
   const params = new URLSearchParams(url.search);
   if (value !== DEFAULT_SETTINGS[param]) {

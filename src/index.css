@@ -8,69 +8,28 @@
 
 @import url(./CommentNode.css);
 @import url(./fonts.css);
-
-body {
-  margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, '.SFNSText-Regular',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #eee;
-}
-
-header {
-  max-width: 38.667em;
-  margin: auto;
-  position: relative;
-  display: flex;
-  justify-content: center;
-}
-
-header a {
-  max-width: 14.667em;
-  margin: 1.333em 0 0 0;
-  display: block;
-}
-
-header img {
-  display: block;
-  height: 100%;
-  width: 100%;
-}
-
-header h1 {
-  text-align: left;
-  color: #333;
-  display: inline-block;
-  margin: 1.333em 0 0 0;
-}
-
-.editor-shell {
+.sipas-editor .editor-shell {
   border-radius: 0.133em;
   color: #000;
   position: relative;
   line-height: 1.7;
   font-weight: 400;
 }
-
-.editor-shell .editor-container {
+.sipas-editor .editor-shell .editor-container {
   background: #fff;
   position: relative;
   display: block;
   border-bottom-left-radius: 0.667em;
   border-bottom-right-radius: 0.667em;
 }
-
-.editor-shell .editor-container.tree-view {
+.sipas-editor .editor-shell .editor-container.tree-view {
   border-radius: 0;
 }
-
-.editor-shell .editor-container.plain-text {
+.sipas-editor .editor-shell .editor-container.plain-text {
   border-top-left-radius: 0.667em;
   border-top-right-radius: 0.667em;
 }
-
-.editor-scroller {
+.sipas-editor .editor-scroller {
   min-height: 10em;
   max-width: 100%;
   border: 0;
@@ -80,21 +39,18 @@ header h1 {
   z-index: 0;
   resize: vertical;
 }
-
-.editor {
+.sipas-editor .editor {
   flex: auto;
   max-width: 100%;
   position: relative;
   resize: vertical;
   z-index: -1;
 }
-
-.test-recorder-output {
+.sipas-editor .test-recorder-output {
   margin: 1.333em auto 1.333em auto;
   width: 100%;
 }
-
-pre {
+.sipas-editor pre {
   line-height: 1.1;
   background: #222;
   color: #fff;
@@ -104,8 +60,7 @@ pre {
   overflow: auto;
   max-height: 26.667em;
 }
-
-.tree-view-output {
+.sipas-editor .tree-view-output {
   display: block;
   background: #222;
   color: #fff;
@@ -117,17 +72,14 @@ pre {
   border-bottom-left-radius: 0.667em;
   border-bottom-right-radius: 0.667em;
 }
-
-pre::-webkit-scrollbar {
+.sipas-editor pre::-webkit-scrollbar {
   background: transparent;
   width: 0.667em;
 }
-
-pre::-webkit-scrollbar-thumb {
+.sipas-editor pre::-webkit-scrollbar-thumb {
   background: #999;
 }
-
-.editor-dev-button {
+.sipas-editor .editor-dev-button {
   position: relative;
   display: block;
   width: 2.667em;
@@ -140,8 +92,7 @@ pre::-webkit-scrollbar-thumb {
   box-shadow: 0em 0.067em 0.667em rgba(0, 0, 0, 0.3);
   background-color: #444;
 }
-
-.editor-dev-button::after {
+.sipas-editor .editor-dev-button::after {
   content: '';
   position: absolute;
   top: 10px;
@@ -152,20 +103,16 @@ pre::-webkit-scrollbar-thumb {
   background-size: contain;
   filter: invert(1);
 }
-
-.editor-dev-button:hover {
+.sipas-editor .editor-dev-button:hover {
   background-color: #555;
 }
-
-.editor-dev-button.active {
+.sipas-editor .editor-dev-button.active {
   background-color: rgb(233, 35, 35);
 }
-
-.test-recorder-toolbar {
+.sipas-editor .test-recorder-toolbar {
   display: flex;
 }
-
-.test-recorder-button {
+.sipas-editor .test-recorder-button {
   position: relative;
   display: block;
   width: 2.133em;
@@ -180,16 +127,13 @@ pre::-webkit-scrollbar-thumb {
   background-color: #222;
   transition: box-shadow 50ms ease-out;
 }
-
-.test-recorder-button:active {
+.sipas-editor .test-recorder-button:active {
   box-shadow: 0.067em 0.133em 0.267em rgba(0, 0, 0, 0.4);
 }
-
-.test-recorder-button + .test-recorder-button {
+.sipas-editor .test-recorder-button + .test-recorder-button {
   margin-left: 0.267em;
 }
-
-.test-recorder-button::after {
+.sipas-editor .test-recorder-button::after {
   content: '';
   position: absolute;
   top: 8px;
@@ -200,71 +144,57 @@ pre::-webkit-scrollbar-thumb {
   background-size: contain;
   filter: invert(1);
 }
-
-#options-button {
+.sipas-editor #options-button {
   position: fixed;
   left: 20px;
   bottom: 20px;
 }
-
-#test-recorder-button {
+.sipas-editor #test-recorder-button {
   position: fixed;
   left: 70px;
   bottom: 20px;
 }
-
-#paste-log-button {
+.sipas-editor #paste-log-button {
   position: fixed;
   left: 120px;
   bottom: 20px;
 }
-
-#docs-button {
+.sipas-editor #docs-button {
   position: fixed;
   left: 170px;
   bottom: 20px;
 }
-
-#options-button::after {
+.sipas-editor #options-button::after {
   background-image: url(images/icons/gear.svg);
 }
-
-#test-recorder-button::after {
+.sipas-editor #test-recorder-button::after {
   background-image: url(images/icons/journal-code.svg);
 }
-
-#paste-log-button::after {
+.sipas-editor #paste-log-button::after {
   background-image: url(images/icons/clipboard.svg);
 }
-
-#docs-button::after {
+.sipas-editor #docs-button::after {
   background-image: url(images/icons/file-earmark-text.svg);
 }
-
-#test-recorder-button-snapshot {
+.sipas-editor #test-recorder-button-snapshot {
   margin-right: auto;
 }
-
-#test-recorder-button-snapshot::after {
+.sipas-editor #test-recorder-button-snapshot::after {
   background-image: url(images/icons/camera.svg);
 }
-
-#test-recorder-button-copy::after {
+.sipas-editor #test-recorder-button-copy::after {
   background-image: url(images/icons/clipboard.svg);
 }
-
-#test-recorder-button-download::after {
+.sipas-editor #test-recorder-button-download::after {
   background-image: url(images/icons/download.svg);
 }
-
-.typeahead-popover {
+.sipas-editor .typeahead-popover {
   background: #fff;
   box-shadow: 0em 0.333em 0.667em rgba(0, 0, 0, 0.3);
   border-radius: 0.533em;
   position: relative;
 }
-
-.typeahead-popover ul {
+.sipas-editor .typeahead-popover ul {
   padding: 0;
   list-style: none;
   margin: 0;
@@ -272,17 +202,14 @@ pre::-webkit-scrollbar-thumb {
   max-height: 13.333em;
   overflow-y: scroll;
 }
-
-.typeahead-popover ul::-webkit-scrollbar {
+.sipas-editor .typeahead-popover ul::-webkit-scrollbar {
   display: none;
 }
-
-.typeahead-popover ul {
+.sipas-editor .typeahead-popover ul {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
-.typeahead-popover ul li {
+.sipas-editor .typeahead-popover ul li {
   margin: 0;
   min-width: 12em;
   font-size: 0.933em;
@@ -290,12 +217,10 @@ pre::-webkit-scrollbar-thumb {
   cursor: pointer;
   border-radius: 0.533em;
 }
-
-.typeahead-popover ul li.selected {
+.sipas-editor .typeahead-popover ul li.selected {
   background: #eee;
 }
-
-.typeahead-popover li {
+.sipas-editor .typeahead-popover li {
   margin: 0 0.533em 0 0.533em;
   padding: 0.533em;
   color: #050505;
@@ -310,34 +235,28 @@ pre::-webkit-scrollbar-thumb {
   border-radius: 0.533em;
   border: 0;
 }
-
-.typeahead-popover li.active {
+.sipas-editor .typeahead-popover li.active {
   display: flex;
   width: 1.333em;
   height: 1.333em;
   background-size: contain;
 }
-
-.typeahead-popover li:first-child {
+.sipas-editor .typeahead-popover li:first-child {
   border-radius: 0.533em 0.533em 0em 0em;
 }
-
-.typeahead-popover li:last-child {
+.sipas-editor .typeahead-popover li:last-child {
   border-radius: 0em 0em 0.533em 0.533em;
 }
-
-.typeahead-popover li:hover {
+.sipas-editor .typeahead-popover li:hover {
   background-color: #eee;
 }
-
-.typeahead-popover li .text {
+.sipas-editor .typeahead-popover li .text {
   display: flex;
   line-height: 1.333em;
   flex-grow: 1;
   min-width: 10em;
 }
-
-.typeahead-popover li .icon {
+.sipas-editor .typeahead-popover li .icon {
   display: flex;
   width: 1.333em;
   height: 1.333em;
@@ -348,112 +267,85 @@ pre::-webkit-scrollbar-thumb {
   background-repeat: no-repeat;
   background-position: center;
 }
-
-.component-picker-menu {
+.sipas-editor .component-picker-menu {
   width: 13.333em;
 }
-
-.mentions-menu {
+.sipas-editor .mentions-menu {
   width: 16.667em;
 }
-
-.auto-embed-menu {
+.sipas-editor .auto-embed-menu {
   width: 10em;
 }
-
-.emoji-menu {
+.sipas-editor .emoji-menu {
   width: 13.333em;
 }
-
-i.palette {
+.sipas-editor i.palette {
   background-image: url(images/icons/palette.svg);
 }
-
-i.bucket {
+.sipas-editor i.bucket {
   background-image: url(images/icons/paint-bucket.svg);
 }
-
-i.bold {
+.sipas-editor i.bold {
   background-image: url(images/icons/type-bold.svg);
 }
-
-i.italic {
+.sipas-editor i.italic {
   background-image: url(images/icons/type-italic.svg);
 }
-
-i.clear {
+.sipas-editor i.clear {
   background-image: url(images/icons/trash.svg);
 }
-
-i.code {
+.sipas-editor i.code {
   background-image: url(images/icons/code.svg);
 }
-
-i.underline {
+.sipas-editor i.underline {
   background-image: url(images/icons/type-underline.svg);
 }
-
-i.uppercase {
+.sipas-editor i.uppercase {
   background-image: url(images/icons/type-uppercase.svg);
 }
-
-i.lowercase {
+.sipas-editor i.lowercase {
   background-image: url(images/icons/type-lowercase.svg);
 }
-
-i.capitalize {
+.sipas-editor i.capitalize {
   background-image: url(images/icons/type-capitalize.svg);
 }
-
-i.strikethrough {
+.sipas-editor i.strikethrough {
   background-image: url(images/icons/type-strikethrough.svg);
 }
-
-i.subscript {
+.sipas-editor i.subscript {
   background-image: url(images/icons/type-subscript.svg);
 }
-
-i.superscript {
+.sipas-editor i.superscript {
   background-image: url(images/icons/type-superscript.svg);
 }
-
-i.highlight {
+.sipas-editor i.highlight {
   background-image: url(images/icons/highlighter.svg);
 }
-
-i.link {
+.sipas-editor i.link {
   background-image: url(images/icons/link.svg);
 }
-
-i.horizontal-rule {
+.sipas-editor i.horizontal-rule {
   background-image: url(images/icons/horizontal-rule.svg);
 }
-
-.icon.plus {
+.sipas-editor .icon.plus {
   background-image: url(images/icons/plus.svg);
 }
-
-.icon.caret-right {
+.sipas-editor .icon.caret-right {
   background-image: url(images/icons/caret-right-fill.svg);
 }
-
-.icon.dropdown-more {
+.sipas-editor .icon.dropdown-more {
   background-image: url(images/icons/dropdown-more.svg);
 }
-
-.icon.font-color {
+.sipas-editor .icon.font-color {
   background-image: url(images/icons/font-color.svg);
 }
-
-.icon.font-family {
+.sipas-editor .icon.font-family {
   background-image: url(images/icons/font-family.svg);
 }
-
-.icon.bg-color {
+.sipas-editor .icon.bg-color {
   background-image: url(images/icons/bg-color.svg);
 }
-
-.icon.table {
+.sipas-editor .icon.table {
   background-color: #6c757d;
   mask-image: url(images/icons/table.svg);
   -webkit-mask-image: url(images/icons/table.svg);
@@ -462,157 +354,121 @@ i.horizontal-rule {
   mask-size: contain;
   -webkit-mask-size: contain;
 }
-
-i.image {
+.sipas-editor i.image {
   background-image: url(images/icons/file-image.svg);
 }
-
-i.table {
+.sipas-editor i.table {
   background-image: url(images/icons/table.svg);
 }
-
-i.close {
+.sipas-editor i.close {
   background-image: url(images/icons/close.svg);
 }
-
-i.figma {
+.sipas-editor i.figma {
   background-image: url(images/icons/figma.svg);
 }
-
-i.poll {
+.sipas-editor i.poll {
   background-image: url(images/icons/card-checklist.svg);
 }
-
-i.columns {
+.sipas-editor i.columns {
   background-image: url(images/icons/3-columns.svg);
 }
-
-i.x {
+.sipas-editor i.x {
   background-image: url(images/icons/x.svg);
 }
-
-i.youtube {
+.sipas-editor i.youtube {
   background-image: url(images/icons/youtube.svg);
 }
 
-.icon.left-align,
-i.left-align {
+.icon.left-align,.sipas-editor i.left-align {
   background-image: url(images/icons/text-left.svg);
 }
 
-.icon.center-align,
-i.center-align {
+.icon.center-align,.sipas-editor i.center-align {
   background-image: url(images/icons/text-center.svg);
 }
 
-.icon.right-align,
-i.right-align {
+.icon.right-align,.sipas-editor i.right-align {
   background-image: url(images/icons/text-right.svg);
 }
 
-.icon.justify-align,
-i.justify-align {
+.icon.justify-align,.sipas-editor i.justify-align {
   background-image: url(images/icons/justify.svg);
 }
 
-.icon.vertical-top,
-i.left-align {
+.icon.vertical-top,.sipas-editor i.left-align {
   background-image: url(images/icons/vertical-top.svg);
 }
 
-.icon.vertical-middle,
-i.center-align {
+.icon.vertical-middle,.sipas-editor i.center-align {
   background-image: url(images/icons/vertical-middle.svg);
 }
 
-.icon.vertical-bottom,
-i.right-align {
+.icon.vertical-bottom,.sipas-editor i.right-align {
   background-image: url(images/icons/vertical-bottom.svg);
 }
-
-i.indent {
+.sipas-editor i.indent {
   background-image: url(images/icons/indent.svg);
 }
-
-i.markdown {
+.sipas-editor i.markdown {
   background-image: url(images/icons/markdown.svg);
 }
-
-i.outdent {
+.sipas-editor i.outdent {
   background-image: url(images/icons/outdent.svg);
 }
-
-i.undo {
+.sipas-editor i.undo {
   background-image: url(images/icons/arrow-counterclockwise.svg);
 }
-
-i.redo {
+.sipas-editor i.redo {
   background-image: url(images/icons/arrow-clockwise.svg);
 }
-
-i.sticky {
+.sipas-editor i.sticky {
   background-image: url(images/icons/sticky.svg);
 }
-
-i.mic {
+.sipas-editor i.mic {
   background-image: url(images/icons/mic.svg);
 }
-
-i.import {
+.sipas-editor i.import {
   background-image: url(images/icons/upload.svg);
 }
-
-i.export {
+.sipas-editor i.export {
   background-image: url(images/icons/download.svg);
 }
-
-i.share {
+.sipas-editor i.share {
   background-image: url(images/icons/send.svg);
 }
-
-i.diagram-2 {
+.sipas-editor i.diagram-2 {
   background-image: url(images/icons/diagram-2.svg);
 }
-
-i.user {
+.sipas-editor i.user {
   background-image: url(images/icons/user.svg);
 }
-
-i.equation {
+.sipas-editor i.equation {
   background-image: url(images/icons/plus-slash-minus.svg);
 }
-
-i.gif {
+.sipas-editor i.gif {
   background-image: url(images/icons/filetype-gif.svg);
 }
-
-i.copy {
+.sipas-editor i.copy {
   background-image: url(images/icons/copy.svg);
 }
-
-i.success {
+.sipas-editor i.success {
   background-image: url(images/icons/success.svg);
 }
-
-i.prettier {
+.sipas-editor i.prettier {
   background-image: url(images/icons/prettier.svg);
 }
-
-i.prettier-error {
+.sipas-editor i.prettier-error {
   background-image: url(images/icons/prettier-error.svg);
 }
 
-i.page-break,
-.icon.page-break {
+.sipas-editor i.page-break,.sipas-editor .icon.page-break {
   background-image: url(images/icons/scissors.svg);
 }
 
-.link-editor .button.active,
-.toolbar .button.active {
+.link-editor .button.active,.sipas-editor .toolbar .button.active {
   background-color: rgb(223, 232, 250);
 }
-
-.link-editor .link-input {
+.sipas-editor .link-editor .link-input {
   display: block;
   width: calc(100% - 5em);
   box-sizing: border-box;
@@ -627,8 +483,7 @@ i.page-break,
   position: relative;
   font-family: inherit;
 }
-
-.link-editor .link-view {
+.sipas-editor .link-editor .link-view {
   display: block;
   width: calc(100% - 1.6em);
   margin: 0.533em 0.8em;
@@ -641,14 +496,12 @@ i.page-break,
   position: relative;
   font-family: inherit;
 }
-
-.link-editor .link-view a {
+.sipas-editor .link-editor .link-view a {
   display: block;
   word-break: break-word;
   width: calc(100% - 2.2em);
 }
-
-.link-editor div.link-edit {
+.sipas-editor .link-editor div.link-edit {
   background-image: url(images/icons/pencil-fill.svg);
   background-size: 1.067em;
   background-position: center;
@@ -661,8 +514,7 @@ i.page-break,
   bottom: 0;
   cursor: pointer;
 }
-
-.link-editor div.link-trash {
+.sipas-editor .link-editor div.link-trash {
   background-image: url(images/icons/trash.svg);
   background-size: 1.067em;
   background-position: center;
@@ -675,8 +527,7 @@ i.page-break,
   bottom: 0;
   cursor: pointer;
 }
-
-.link-editor div.link-cancel {
+.sipas-editor .link-editor div.link-cancel {
   background-image: url(images/icons/close.svg);
   background-size: 1.067em;
   background-position: center;
@@ -690,8 +541,7 @@ i.page-break,
   bottom: 0;
   cursor: pointer;
 }
-
-.link-editor div.link-confirm {
+.sipas-editor .link-editor div.link-confirm {
   background-image: url(images/icons/success-alt.svg);
   background-size: 1.067em;
   background-position: center;
@@ -705,8 +555,7 @@ i.page-break,
   bottom: 0;
   cursor: pointer;
 }
-
-.link-editor .link-input a {
+.sipas-editor .link-editor .link-input a {
   color: rgb(33, 111, 219);
   text-decoration: underline;
   white-space: nowrap;
@@ -714,30 +563,25 @@ i.page-break,
   margin-right: 2em;
   text-overflow: ellipsis;
 }
-
-.link-editor .link-input a:hover {
+.sipas-editor .link-editor .link-input a:hover {
   text-decoration: underline;
 }
 
-.link-editor .font-size-wrapper,
-.link-editor .font-family-wrapper {
+.link-editor .font-size-wrapper,.sipas-editor .link-editor .font-family-wrapper {
   display: flex;
   margin: 0 0.267em;
 }
-
-.link-editor select {
+.sipas-editor .link-editor select {
   padding: 0.4em;
   border: none;
   background-color: rgba(0, 0, 0, 0.075);
   border-radius: 0.267em;
 }
-
-.mention:focus {
+.sipas-editor .mention:focus {
   box-shadow: rgb(180 213 255) 0em 0em 0em 0.133em;
   outline: none;
 }
-
-.characters-limit {
+.sipas-editor .characters-limit {
   color: #888;
   font-size: 0.8em;
   text-align: right;
@@ -746,12 +590,10 @@ i.page-break,
   left: 12px;
   bottom: 5px;
 }
-
-.characters-limit.characters-limit-exceeded {
+.sipas-editor .characters-limit.characters-limit-exceeded {
   color: red;
 }
-
-.dropdown {
+.sipas-editor .dropdown {
   z-index: 100;
   display: block;
   position: fixed;
@@ -763,8 +605,7 @@ i.page-break,
   background-color: #fff;
   overflow-y: auto;
 }
-
-.dropdown .item {
+.sipas-editor .dropdown .item {
   margin: 0 0.533em 0 0.533em;
   padding: 0.533em;
   color: #050505;
@@ -782,52 +623,42 @@ i.page-break,
   max-width: 17.6em;
   min-width: 6.667em;
 }
-
-.dropdown .item.wide {
+.sipas-editor .dropdown .item.wide {
   align-items: center;
   width: 17.333em;
 }
-
-.dropdown .item.wide .icon-text-container {
+.sipas-editor .dropdown .item.wide .icon-text-container {
   display: flex;
-
-  .text {
+.sipas-editor .text {
     min-width: 8em;
   }
 }
-
-.dropdown .item .shortcut {
+.sipas-editor .dropdown .item .shortcut {
   color: #939393;
   align-self: flex-end;
 }
-
-.dropdown .item .active {
+.sipas-editor .dropdown .item .active {
   display: flex;
   width: 1.333em;
   height: 1.333em;
   background-size: contain;
 }
-
-.dropdown .item:first-child {
+.sipas-editor .dropdown .item:first-child {
   margin-top: 0.533em;
 }
-
-.dropdown .item:last-child {
+.sipas-editor .dropdown .item:last-child {
   margin-bottom: 0.533em;
 }
-
-.dropdown .item:hover {
+.sipas-editor .dropdown .item:hover {
   background-color: #eee;
 }
-
-.dropdown .item .text {
+.sipas-editor .dropdown .item .text {
   display: flex;
   line-height: 1.333em;
   flex-grow: 1;
   min-width: 10em;
 }
-
-.dropdown .item .icon {
+.sipas-editor .dropdown .item .icon {
   display: flex;
   width: 1.333em;
   height: 1.333em;
@@ -838,84 +669,66 @@ i.page-break,
   background-position: center;
   background-repeat: no-repeat;
 }
-
-.dropdown .divider {
+.sipas-editor .dropdown .divider {
   width: auto;
   background-color: #eee;
   margin: 0.267em 0.533em;
   height: 0.067em;
 }
 
-@media screen and (max-width: 1100px) {
-  .dropdown-button-text {
+@media screen and (max-width: 1100px) {.sipas-editor .dropdown-button-text {
     display: none !important;
   }
-
-  .dialog-dropdown > .dropdown-button-text {
+.sipas-editor .dialog-dropdown > .dropdown-button-text {
     display: flex !important;
   }
-
-  .font-size .dropdown-button-text {
+.sipas-editor .font-size .dropdown-button-text {
     display: flex !important;
   }
-
-  .code-language .dropdown-button-text {
+.sipas-editor .code-language .dropdown-button-text {
     display: flex !important;
   }
 }
-
-.icon.paragraph {
+.sipas-editor .icon.paragraph {
   background-image: url(images/icons/text-paragraph.svg);
 }
-
-.icon.h1 {
+.sipas-editor .icon.h1 {
   background-image: url(images/icons/type-h1.svg);
 }
-
-.icon.h2 {
+.sipas-editor .icon.h2 {
   background-image: url(images/icons/type-h2.svg);
 }
-
-.icon.h3 {
+.sipas-editor .icon.h3 {
   background-image: url(images/icons/type-h3.svg);
 }
-
-.icon.h4 {
+.sipas-editor .icon.h4 {
   background-image: url(images/icons/type-h4.svg);
 }
-
-.icon.h5 {
+.sipas-editor .icon.h5 {
   background-image: url(images/icons/type-h5.svg);
 }
-
-.icon.h6 {
+.sipas-editor .icon.h6 {
   background-image: url(images/icons/type-h6.svg);
 }
 
-.icon.bullet-list,
-.icon.bullet {
+.icon.bullet-list,.sipas-editor .icon.bullet {
   background-image: url(images/icons/list-ul.svg);
 }
 
-.icon.check-list,
-.icon.check {
+.icon.check-list,.sipas-editor .icon.check {
   background-image: url(images/icons/square-check.svg);
 }
 
-.icon.numbered-list,
-.icon.number {
+.icon.numbered-list,.sipas-editor .icon.number {
   background-image: url(images/icons/list-ol.svg);
 }
-
-.icon.quote {
+.sipas-editor .icon.quote {
   background-image: url(images/icons/chat-square-quote.svg);
 }
-
-.icon.code {
+.sipas-editor .icon.code {
   background-image: url(images/icons/code.svg);
 }
-
-.switches {
+.sipas-editor .switches {
   z-index: 6;
   position: fixed;
   left: 10px;
@@ -934,8 +747,7 @@ i.page-break,
     transform: translateX(0);
   }
 }
-
-.switch {
+.sipas-editor .switch {
   display: block;
   color: #444;
   margin: 0.333em 0;
@@ -943,16 +755,13 @@ i.page-break,
   padding: 0.333em 0.667em;
   border-radius: 0.667em;
 }
-
-#rich-text-switch {
+.sipas-editor #rich-text-switch {
   right: 0;
 }
-
-#character-count-switch {
+.sipas-editor #character-count-switch {
   right: 130px;
 }
-
-.switch label {
+.sipas-editor .switch label {
   margin-right: 0.333em;
   line-height: 1.6em;
   width: 6.667em;
@@ -960,8 +769,7 @@ i.page-break,
   display: inline-block;
   vertical-align: middle;
 }
-
-.switch button {
+.sipas-editor .switch button {
   background-color: rgb(206, 208, 212);
   height: 1.6em;
   box-sizing: border-box;
@@ -975,12 +783,10 @@ i.page-break,
   transition: background-color 0.1s;
   border: 0.133em solid transparent;
 }
-
-.switch button:focus-visible {
+.sipas-editor .switch button:focus-visible {
   border-color: blue;
 }
-
-.switch button span {
+.sipas-editor .switch button span {
   top: 0px;
   left: 0px;
   display: block;
@@ -991,46 +797,37 @@ i.page-break,
   background-color: white;
   transition: transform 0.2s;
 }
-
-.switch button[aria-checked='true'] {
+.sipas-editor .switch button[aria-checked='true'] {
   background-color: rgb(24, 119, 242);
 }
-
-.switch button[aria-checked='true'] span {
+.sipas-editor .switch button[aria-checked='true'] span {
   transform: translateX(1.333em);
 }
-
-.editor-shell span.editor-image {
+.sipas-editor .editor-shell span.editor-image {
   cursor: default;
   display: inline-block;
   position: relative;
   user-select: none;
 }
-
-.editor-shell .editor-image img {
+.sipas-editor .editor-shell .editor-image img {
   max-width: 100%;
   cursor: default;
 }
-
-.editor-shell .editor-image img.focused {
+.sipas-editor .editor-shell .editor-image img.focused {
   outline: 0.133em solid rgb(60, 132, 244);
   user-select: none;
 }
-
-.editor-shell .editor-image img.focused.draggable {
+.sipas-editor .editor-shell .editor-image img.focused.draggable {
   cursor: grab;
 }
-
-.editor-shell .editor-image img.focused.draggable:active {
+.sipas-editor .editor-shell .editor-image img.focused.draggable:active {
   cursor: grabbing;
 }
-
-.editor-shell .editor-image .image-caption-container .tree-view-output {
+.sipas-editor .editor-shell .editor-image .image-caption-container .tree-view-output {
   margin: 0;
   border-radius: 0;
 }
-
-.editor-shell .editor-image .image-caption-container {
+.sipas-editor .editor-shell .editor-image .image-caption-container {
   display: block;
   position: absolute;
   bottom: 4px;
@@ -1044,8 +841,7 @@ i.page-break,
   color: #000;
   overflow: hidden;
 }
-
-.editor-shell .editor-image .image-caption-button {
+.sipas-editor .editor-shell .editor-image .image-caption-button {
   display: block;
   position: absolute;
   bottom: 20px;
@@ -1062,12 +858,10 @@ i.page-break,
   cursor: pointer;
   user-select: none;
 }
-
-.editor-shell .editor-image .image-caption-button:hover {
+.sipas-editor .editor-shell .editor-image .image-caption-button:hover {
   background-color: rgba(60, 132, 244, 0.5);
 }
-
-.editor-shell .editor-image .image-edit-button {
+.sipas-editor .editor-shell .editor-image .image-edit-button {
   border: 0.067em solid rgba(0, 0, 0, 0.3);
   border-radius: 0.333em;
   background-image: url(images/icons/pencil-fill.svg);
@@ -1083,12 +877,10 @@ i.page-break,
   cursor: pointer;
   user-select: none;
 }
-
-.editor-shell .editor-image .image-edit-button:hover {
+.sipas-editor .editor-shell .editor-image .image-edit-button:hover {
   background-color: rgba(60, 132, 244, 0.1);
 }
-
-.editor-shell .editor-image .image-resizer {
+.sipas-editor .editor-shell .editor-image .image-resizer {
   display: block;
   width: 0.467em;
   height: 0.467em;
@@ -1096,101 +888,83 @@ i.page-break,
   background-color: rgb(60, 132, 244);
   border: 0.067em solid #fff;
 }
-
-.editor-shell .editor-image .image-resizer.image-resizer-n {
+.sipas-editor .editor-shell .editor-image .image-resizer.image-resizer-n {
   top: -6px;
   left: 48%;
   cursor: n-resize;
 }
-
-.editor-shell .editor-image .image-resizer.image-resizer-ne {
+.sipas-editor .editor-shell .editor-image .image-resizer.image-resizer-ne {
   top: -6px;
   right: -6px;
   cursor: ne-resize;
 }
-
-.editor-shell .editor-image .image-resizer.image-resizer-e {
+.sipas-editor .editor-shell .editor-image .image-resizer.image-resizer-e {
   bottom: 48%;
   right: -6px;
   cursor: e-resize;
 }
-
-.editor-shell .editor-image .image-resizer.image-resizer-se {
+.sipas-editor .editor-shell .editor-image .image-resizer.image-resizer-se {
   bottom: -2px;
   right: -6px;
   cursor: nwse-resize;
 }
-
-.editor-shell .editor-image .image-resizer.image-resizer-s {
+.sipas-editor .editor-shell .editor-image .image-resizer.image-resizer-s {
   bottom: -2px;
   left: 48%;
   cursor: s-resize;
 }
-
-.editor-shell .editor-image .image-resizer.image-resizer-sw {
+.sipas-editor .editor-shell .editor-image .image-resizer.image-resizer-sw {
   bottom: -2px;
   left: -6px;
   cursor: sw-resize;
 }
-
-.editor-shell .editor-image .image-resizer.image-resizer-w {
+.sipas-editor .editor-shell .editor-image .image-resizer.image-resizer-w {
   bottom: 48%;
   left: -6px;
   cursor: w-resize;
 }
-
-.editor-shell .editor-image .image-resizer.image-resizer-nw {
+.sipas-editor .editor-shell .editor-image .image-resizer.image-resizer-nw {
   top: -6px;
   left: -6px;
   cursor: nw-resize;
 }
-
-.editor-shell span.inline-editor-image {
+.sipas-editor .editor-shell span.inline-editor-image {
   cursor: default;
   display: inline-block;
   position: relative;
   z-index: 1;
 }
-
-.editor-shell .inline-editor-image img {
+.sipas-editor .editor-shell .inline-editor-image img {
   max-width: 100%;
   cursor: default;
 }
-
-.editor-shell .inline-editor-image img.focused {
+.sipas-editor .editor-shell .inline-editor-image img.focused {
   outline: 0.133em solid rgb(60, 132, 244);
 }
-
-.editor-shell .inline-editor-image img.focused.draggable {
+.sipas-editor .editor-shell .inline-editor-image img.focused.draggable {
   cursor: grab;
 }
-
-.editor-shell .inline-editor-image img.focused.draggable:active {
+.sipas-editor .editor-shell .inline-editor-image img.focused.draggable:active {
   cursor: grabbing;
 }
-
-.editor-shell .inline-editor-image .image-caption-container .tree-view-output {
+.sipas-editor .editor-shell .inline-editor-image .image-caption-container .tree-view-output {
   margin: 0;
   border-radius: 0;
 }
-
-.editor-shell .inline-editor-image.position-full {
+.sipas-editor .editor-shell .inline-editor-image.position-full {
   margin: 1em 0 1em 0;
 }
-
-.editor-shell .inline-editor-image.position-left {
+.sipas-editor .editor-shell .inline-editor-image.position-left {
   float: left;
   width: 50%;
   margin: 1em 1em 0 0;
 }
-
-.editor-shell .inline-editor-image.position-right {
+.sipas-editor .editor-shell .inline-editor-image.position-right {
   float: right;
   width: 50%;
   margin: 1em 0 0 1em;
 }
-
-.editor-shell .inline-editor-image .image-edit-button {
+.sipas-editor .editor-shell .inline-editor-image .image-edit-button {
   display: block;
   position: absolute;
   top: 12px;
@@ -1205,20 +979,17 @@ i.page-break,
   cursor: pointer;
   user-select: none;
 }
-
-.editor-shell .inline-editor-image .image-edit-button:hover {
+.sipas-editor .editor-shell .inline-editor-image .image-edit-button:hover {
   background-color: rgba(60, 132, 244, 0.5);
 }
-
-.editor-shell .inline-editor-image .image-caption-container {
+.sipas-editor .editor-shell .inline-editor-image .image-caption-container {
   display: block;
   background-color: #f4f4f4;
   min-width: 100%;
   color: #000;
   overflow: hidden;
 }
-
-.emoji {
+.sipas-editor .emoji {
   color: transparent;
   caret-color: rgb(5, 5, 5);
   background-size: 1.067em 1.067em;
@@ -1227,128 +998,101 @@ i.page-break,
   vertical-align: middle;
   margin: 0 -0.067em;
 }
-
-.emoji-inner {
+.sipas-editor .emoji-inner {
   padding: 0 0.15em;
 }
-
-.emoji-inner::selection {
+.sipas-editor .emoji-inner::selection {
   color: transparent;
   background-color: rgba(150, 150, 150, 0.4);
 }
-
-.emoji-inner::moz-selection {
+.sipas-editor .emoji-inner::moz-selection {
   color: transparent;
   background-color: rgba(150, 150, 150, 0.4);
 }
-
-.emoji.happysmile {
+.sipas-editor .emoji.happysmile {
   background-image: url(images/emoji/1F642.png);
 }
-
-.emoji.veryhappysmile {
+.sipas-editor .emoji.veryhappysmile {
   background-image: url(images/emoji/1F600.png);
 }
-
-.emoji.unhappysmile {
+.sipas-editor .emoji.unhappysmile {
   background-image: url(images/emoji/1F641.png);
 }
-
-.emoji.heart {
+.sipas-editor .emoji.heart {
   background-image: url(images/emoji/2764.png);
 }
-
-.keyword {
+.sipas-editor .keyword {
   color: rgb(241, 118, 94);
   font-weight: bold;
 }
-
-.actions {
+.sipas-editor .actions {
   position: absolute;
   text-align: right;
   margin: 0.667em;
   bottom: 0;
   right: 0;
 }
-
-.actions.tree-view {
+.sipas-editor .actions.tree-view {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-
-.actions i {
+.sipas-editor .actions i {
   background-size: contain;
   display: inline-block;
   height: 1em;
   width: 1em;
   vertical-align: -0.25em;
 }
-
-.actions i.indent {
+.sipas-editor .actions i.indent {
   background-image: url(images/icons/indent.svg);
 }
-
-.actions i.outdent {
+.sipas-editor .actions i.outdent {
   background-image: url(images/icons/outdent.svg);
 }
-
-.actions i.lock {
+.sipas-editor .actions i.lock {
   background-image: url(images/icons/lock-fill.svg);
 }
-
-.actions i.image {
+.sipas-editor .actions i.image {
   background-image: url(images/icons/file-image.svg);
 }
-
-.actions i.table {
+.sipas-editor .actions i.table {
   background-image: url(images/icons/table.svg);
 }
-
-.actions i.unlock {
+.sipas-editor .actions i.unlock {
   background-image: url(images/icons/lock.svg);
 }
-
-.actions i.left-align {
+.sipas-editor .actions i.left-align {
   background-image: url(images/icons/text-left.svg);
 }
-
-.actions i.center-align {
+.sipas-editor .actions i.center-align {
   background-image: url(images/icons/text-center.svg);
 }
-
-.actions i.right-align {
+.sipas-editor .actions i.right-align {
   background-image: url(images/icons/text-right.svg);
 }
-
-.actions i.justify-align {
+.sipas-editor .actions i.justify-align {
   background-image: url(images/icons/justify.svg);
 }
-
-.actions i.disconnect {
+.sipas-editor .actions i.disconnect {
   background-image: url(images/icons/plug.svg);
 }
-
-.actions i.connect {
+.sipas-editor .actions i.connect {
   background-image: url(images/icons/plug-fill.svg);
 }
-
-.table-cell-action-button-container {
+.sipas-editor .table-cell-action-button-container {
   position: absolute;
   z-index: 3;
   top: 0;
   left: 0;
   will-change: transform;
-}
-.table-cell-action-button-container.table-cell-action-button-container--active {
+}.sipas-editor .table-cell-action-button-container.table-cell-action-button-container--active {
   pointer-events: auto;
   opacity: 1;
-}
-.table-cell-action-button-container.table-cell-action-button-container--inactive {
+}.sipas-editor .table-cell-action-button-container.table-cell-action-button-container--inactive {
   pointer-events: none;
   opacity: 0;
 }
-
-.table-cell-action-button {
+.sipas-editor .table-cell-action-button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1361,8 +1105,7 @@ i.page-break,
   display: inline-block;
   cursor: pointer;
 }
-
-i.chevron-down {
+.sipas-editor i.chevron-down {
   background-color: transparent;
   background-size: contain;
   display: inline-block;
@@ -1370,8 +1113,7 @@ i.chevron-down {
   width: 0.533em;
   background-image: url(images/icons/chevron-down.svg);
 }
-
-.action-button {
+.sipas-editor .action-button {
   background-color: #eee;
   border: 0;
   padding: 0.533em 0.8em;
@@ -1382,17 +1124,14 @@ i.chevron-down {
   display: inline-block;
   cursor: pointer;
 }
-
-.action-button:hover {
+.sipas-editor .action-button:hover {
   background-color: #ddd;
   color: #000;
 }
-
-.action-button-mic.active {
+.sipas-editor .action-button-mic.active {
   animation: mic-pulsate-color 3s infinite;
 }
-
-button.action-button:disabled {
+.sipas-editor button.action-button:disabled {
   opacity: 0.6;
   background: #eee;
   cursor: not-allowed;
@@ -1411,20 +1150,17 @@ button.action-button:disabled {
     background-color: #ffdcdc;
   }
 }
-
-.debug-timetravel-panel {
+.sipas-editor .debug-timetravel-panel {
   overflow: hidden;
   padding: 0 0 0.667em 0;
   margin: auto;
   display: flex;
 }
-
-.debug-timetravel-panel-slider {
+.sipas-editor .debug-timetravel-panel-slider {
   padding: 0;
   flex: 8;
 }
-
-.debug-timetravel-panel-button {
+.sipas-editor .debug-timetravel-panel-button {
   padding: 0;
   border: 0;
   background: none;
@@ -1432,12 +1168,10 @@ button.action-button:disabled {
   color: #fff;
   font-size: 0.8em;
 }
-
-.debug-timetravel-panel-button:hover {
+.sipas-editor .debug-timetravel-panel-button:hover {
   text-decoration: underline;
 }
-
-.debug-timetravel-button {
+.sipas-editor .debug-timetravel-button {
   border: 0;
   padding: 0;
   font-size: 0.8em;
@@ -1447,12 +1181,10 @@ button.action-button:disabled {
   background: none;
   color: #fff;
 }
-
-.debug-timetravel-button:hover {
+.sipas-editor .debug-timetravel-button:hover {
   text-decoration: underline;
 }
-
-.debug-treetype-button {
+.sipas-editor .debug-treetype-button {
   border: 0;
   padding: 0;
   font-size: 0.8em;
@@ -1462,12 +1194,10 @@ button.action-button:disabled {
   background: none;
   color: #fff;
 }
-
-.debug-treetype-button:hover {
+.sipas-editor .debug-treetype-button:hover {
   text-decoration: underline;
 }
-
-.connecting {
+.sipas-editor .connecting {
   font-size: 1em;
   color: #999;
   overflow: hidden;
@@ -1480,16 +1210,13 @@ button.action-button:disabled {
   display: inline-block;
   pointer-events: none;
 }
-
-.ltr {
+.sipas-editor .ltr {
   text-align: left;
 }
-
-.rtl {
+.sipas-editor .rtl {
   text-align: right;
 }
-
-.toolbar {
+.sipas-editor .toolbar {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 0.067em;
@@ -1506,8 +1233,7 @@ button.action-button:disabled {
   z-index: 2;
   overflow-y: hidden; /* disable vertical scroll*/
 }
-
-button.toolbar-item {
+.sipas-editor button.toolbar-item {
   border: 0;
   display: flex;
   background: none;
@@ -1519,16 +1245,13 @@ button.toolbar-item {
   align-items: center;
   justify-content: space-between;
 }
-
-button.toolbar-item:disabled {
+.sipas-editor button.toolbar-item:disabled {
   cursor: not-allowed;
 }
-
-button.toolbar-item.spaced {
+.sipas-editor button.toolbar-item.spaced {
   margin-right: 0.133em;
 }
-
-button.toolbar-item i.format {
+.sipas-editor button.toolbar-item i.format {
   background-size: contain;
   display: inline-block;
   height: 1.2em;
@@ -1540,33 +1263,26 @@ button.toolbar-item i.format {
 
 button.toolbar-item:disabled .icon,
 button.toolbar-item:disabled .text,
-button.toolbar-item:disabled i.format,
-button.toolbar-item:disabled .chevron-down {
+.sipas-editor button.toolbar-item:disabled i.format,.sipas-editor button.toolbar-item:disabled .chevron-down {
   opacity: 0.2;
 }
-
-button.toolbar-item.active {
+.sipas-editor button.toolbar-item.active {
   background-color: rgba(223, 232, 250, 0.3);
 }
-
-button.toolbar-item.active i {
+.sipas-editor button.toolbar-item.active i {
   opacity: 1;
 }
-
-.toolbar-item:hover:not([disabled]) {
+.sipas-editor .toolbar-item:hover:not([disabled]) {
   background-color: #eee;
 }
-
-.toolbar-item.font-family .text {
+.sipas-editor .toolbar-item.font-family .text {
   display: block;
   max-width: 2.667em;
 }
-
-.toolbar .code-language {
+.sipas-editor .toolbar .code-language {
   width: 10em;
 }
-
-.toolbar .toolbar-item .text {
+.sipas-editor .toolbar .toolbar-item .text {
   display: flex;
   line-height: 1.333em;
   vertical-align: middle;
@@ -1578,8 +1294,7 @@ button.toolbar-item.active i {
   text-align: left;
   padding-right: 0.667em;
 }
-
-.toolbar .toolbar-item .icon {
+.sipas-editor .toolbar .toolbar-item .icon {
   display: flex;
   width: 1.333em;
   height: 1.333em;
@@ -1589,16 +1304,14 @@ button.toolbar-item.active i {
   background-size: contain;
 }
 
-.toolbar i.chevron-down,
-.toolbar-item i.chevron-down {
+.toolbar i.chevron-down,.sipas-editor .toolbar-item i.chevron-down {
   margin-top: 0.2em;
   width: 1.067em;
   height: 1.067em;
   display: flex;
   user-select: none;
 }
-
-.toolbar i.chevron-down.inside {
+.sipas-editor .toolbar i.chevron-down.inside {
   width: 1.067em;
   height: 1.067em;
   display: flex;
@@ -1607,21 +1320,18 @@ button.toolbar-item.active i {
   margin-right: 0.667em;
   pointer-events: none;
 }
-
-.toolbar .divider {
+.sipas-editor .toolbar .divider {
   width: 0.067em;
   background-color: #eee;
   margin: 0 0.267em;
 }
-
-.sticky-note-container {
+.sipas-editor .sticky-note-container {
   position: absolute;
   z-index: 9;
   width: 8em;
   display: inline-block;
 }
-
-.sticky-note {
+.sipas-editor .sticky-note {
   line-height: 1;
   text-align: left;
   width: 8em;
@@ -1635,8 +1345,7 @@ button.toolbar-item.active i {
   display: block;
   cursor: move;
 }
-
-.sticky-note:after {
+.sipas-editor .sticky-note:after {
   content: '';
   position: absolute;
   z-index: -1;
@@ -1648,8 +1357,7 @@ button.toolbar-item.active i {
   box-shadow: 0.133em 1em 0.333em rgba(0, 0, 0, 0.4);
   transform: matrix(-1, -0.1, 0, 1, 0, 0);
 }
-
-.sticky-note.yellow {
+.sipas-editor .sticky-note.yellow {
   border-top: 0.067em solid #fdfd86;
   background: linear-gradient(
     135deg,
@@ -1659,8 +1367,7 @@ button.toolbar-item.active i {
     #ffffc6 100%
   );
 }
-
-.sticky-note.pink {
+.sipas-editor .sticky-note.pink {
   border-top: 0.067em solid #e7d1e4;
   background: linear-gradient(
     135deg,
@@ -1670,16 +1377,13 @@ button.toolbar-item.active i {
     #e7bfe1 100%
   );
 }
-
-.sticky-note-container.dragging {
+.sipas-editor .sticky-note-container.dragging {
   transition: none !important;
 }
-
-.sticky-note div {
+.sipas-editor .sticky-note div {
   cursor: text;
 }
-
-.sticky-note .delete {
+.sipas-editor .sticky-note .delete {
   border: 0;
   background: none;
   position: absolute;
@@ -1689,13 +1393,11 @@ button.toolbar-item.active i {
   cursor: pointer;
   opacity: 0.5;
 }
-
-.sticky-note .delete:hover {
+.sipas-editor .sticky-note .delete:hover {
   font-weight: bold;
   opacity: 1;
 }
-
-.sticky-note .color {
+.sipas-editor .sticky-note .color {
   border: 0;
   background: none;
   position: absolute;
@@ -1704,31 +1406,26 @@ button.toolbar-item.active i {
   cursor: pointer;
   opacity: 0.5;
 }
-
-.sticky-note .color:hover {
+.sipas-editor .sticky-note .color:hover {
   opacity: 1;
 }
-
-.sticky-note .color i {
+.sipas-editor .sticky-note .color i {
   display: block;
   width: 0.8em;
   height: 0.8em;
   background-size: contain;
 }
-
-.excalidraw-button {
+.sipas-editor .excalidraw-button {
   border: 0;
   padding: 0;
   margin: 0;
   background-color: transparent;
 }
-
-.excalidraw-button.selected {
+.sipas-editor .excalidraw-button.selected {
   outline: 0.133em solid rgb(60, 132, 244);
   user-select: none;
 }
-
-.github-corner:hover .octo-arm {
+.sipas-editor .github-corner:hover .octo-arm {
   animation: octocat-wave 560ms ease-in-out;
 }
 
@@ -1749,42 +1446,33 @@ button.toolbar-item.active i {
   }
 }
 
-@media (max-width: 500px) {
-  .github-corner:hover .octo-arm {
+@media (max-width: 500px) {.sipas-editor .github-corner:hover .octo-arm {
     animation: none;
   }
-
-  .github-corner .octo-arm {
+.sipas-editor .github-corner .octo-arm {
     animation: octocat-wave 560ms ease-in-out;
   }
 }
-
-.spacer {
+.sipas-editor .spacer {
   letter-spacing: -0.133em;
 }
-
-.editor-equation {
+.sipas-editor .editor-equation {
   cursor: default;
   user-select: none;
 }
-
-.editor-equation.focused {
+.sipas-editor .editor-equation.focused {
   outline: 0.133em solid rgb(60, 132, 244);
 }
-
-button.item i {
+.sipas-editor button.item i {
   opacity: 0.6;
 }
-
-button.item.dropdown-item-active {
+.sipas-editor button.item.dropdown-item-active {
   background-color: rgba(223, 232, 250, 0.3);
 }
-
-button.item.dropdown-item-active i {
+.sipas-editor button.item.dropdown-item-active i {
   opacity: 1;
 }
-
-.TableNode__contentEditable {
+.sipas-editor .TableNode__contentEditable {
   min-height: 1.333em;
   border: 0em;
   resize: none;
@@ -1799,19 +1487,16 @@ button.item.dropdown-item-active i {
   word-break: break-word;
   z-index: 3;
 }
-
-.dialog-dropdown {
+.sipas-editor .dialog-dropdown {
   background-color: #eee !important;
   margin-bottom: 0.667em;
   width: 100%;
 }
-
-.toolbar .block-controls {
+.sipas-editor .toolbar .block-controls {
   display: flex;
   align-items: center;
 }
-
-.toolbar .block-controls .dropdown-button-text {
+.sipas-editor .toolbar .block-controls .dropdown-button-text {
   width: 7em;
   text-align: left;
   overflow: hidden;

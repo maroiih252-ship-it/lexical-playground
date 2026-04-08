@@ -21,16 +21,11 @@ import {useEffect, useRef, useState} from 'react';
 
 import useReport from '../../hooks/useReport';
 
-export const SPEECH_TO_TEXT_COMMAND: LexicalCommand<boolean> = createCommand(
+export const SPEECH_TO_TEXT_COMMAND: LexicalCommand = createCommand(
   'SPEECH_TO_TEXT_COMMAND',
 );
 
-const VOICE_COMMANDS: Readonly<
-  Record<
-    string,
-    (arg0: {editor: LexicalEditor; selection: RangeSelection}) => void
-  >
-> = {
+const VOICE_COMMANDS: Readonly = {
   '\n': ({selection}) => {
     selection.insertParagraph();
   },
@@ -43,15 +38,16 @@ const VOICE_COMMANDS: Readonly<
 };
 
 export const SUPPORT_SPEECH_RECOGNITION: boolean =
-  'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
+  typeof window !== 'undefined' &&
+  ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window);
 
 function SpeechToTextPlugin(): null {
   const [editor] = useLexicalComposerContext();
-  const [isEnabled, setIsEnabled] = useState<boolean>(false);
+  const [isEnabled, setIsEnabled] = useState(false);
   const SpeechRecognition =
     // @ts-expect-error missing type
     window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = useRef<typeof SpeechRecognition | null>(null);
+  const recognition = useRef(null);
   const report = useReport();
 
   useEffect(() => {

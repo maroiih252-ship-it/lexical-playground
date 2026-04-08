@@ -8,10 +8,18 @@
 
 import {INITIAL_SETTINGS, Settings} from './appSettings';
 
+function isBrowser(): boolean {
+  return typeof window !== 'undefined';
+}
+
 // Export a function so this is not tree-shaken,
 // but evaluate it immediately so it executes before
 // lexical computes CAN_USE_BEFORE_INPUT
 export default (() => {
+  if (!isBrowser()) {
+    return INITIAL_SETTINGS;
+  }
+
   // override default options with query parameters if any
   const urlSearchParams = new URLSearchParams(window.location.search);
 

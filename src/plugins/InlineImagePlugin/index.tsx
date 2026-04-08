@@ -47,10 +47,11 @@ import FileInput from '../../ui/FileInput';
 import Select from '../../ui/Select';
 import TextInput from '../../ui/TextInput';
 
-export type InsertInlineImagePayload = Readonly<InlineImagePayload>;
+export type InsertInlineImagePayload = Readonly;
 
-export const INSERT_INLINE_IMAGE_COMMAND: LexicalCommand<InlineImagePayload> =
-  createCommand('INSERT_INLINE_IMAGE_COMMAND');
+export const INSERT_INLINE_IMAGE_COMMAND: LexicalCommand = createCommand(
+  'INSERT_INLINE_IMAGE_COMMAND',
+);
 
 export function InsertInlineImageDialog({
   activeEditor,
@@ -64,28 +65,22 @@ export function InsertInlineImageDialog({
   const [src, setSrc] = useState('');
   const [altText, setAltText] = useState('');
   const [showCaption, setShowCaption] = useState(false);
-  const [position, setPosition] = useState<Position>('left');
+  const [position, setPosition] = useState('left');
 
   const isDisabled = src === '';
 
-  const handleShowCaptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleShowCaptionChange = (e: React.ChangeEvent) => {
     setShowCaption(e.target.checked);
   };
 
-  const handlePositionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handlePositionChange = (e: React.ChangeEvent) => {
     setPosition(e.target.value as Position);
   };
 
   const loadImage = (files: FileList | null) => {
-    const reader = new FileReader();
-    reader.onload = function () {
-      if (typeof reader.result === 'string') {
-        setSrc(reader.result);
-      }
-      return '';
-    };
-    if (files !== null) {
-      reader.readAsDataURL(files[0]);
+    if (files !== null && files[0]) {
+      const blobUrl = URL.createObjectURL(files[0]);
+      setSrc(blobUrl);
     }
   };
 
@@ -169,7 +164,7 @@ export default function InlineImagePlugin(): JSX.Element | null {
     }
 
     return mergeRegister(
-      editor.registerCommand<InsertInlineImagePayload>(
+      editor.registerCommand(
         INSERT_INLINE_IMAGE_COMMAND,
         (payload) => {
           const imageNode = $createInlineImageNode(payload);
@@ -182,21 +177,21 @@ export default function InlineImagePlugin(): JSX.Element | null {
         },
         COMMAND_PRIORITY_EDITOR,
       ),
-      editor.registerCommand<DragEvent>(
+      editor.registerCommand(
         DRAGSTART_COMMAND,
         (event) => {
           return $onDragStart(event);
         },
         COMMAND_PRIORITY_HIGH,
       ),
-      editor.registerCommand<DragEvent>(
+      editor.registerCommand(
         DRAGOVER_COMMAND,
         (event) => {
           return $onDragover(event);
         },
         COMMAND_PRIORITY_LOW,
       ),
-      editor.registerCommand<DragEvent>(
+      editor.registerCommand(
         DROP_COMMAND,
         (event) => {
           return $onDrop(event, editor);
@@ -211,8 +206,14 @@ export default function InlineImagePlugin(): JSX.Element | null {
 
 const TRANSPARENT_IMAGE =
   'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-const img = document.createElement('img');
-img.src = TRANSPARENT_IMAGE;
+let img: HTMLImageElement | null = null;
+function getDragImage(): HTMLImageElement {
+  if (!img) {
+    img = document.createElement('img');
+    img.src = TRANSPARENT_IMAGE;
+  }
+  return img;
+}
 
 function $onDragStart(event: DragEvent): boolean {
   const node = $getImageNodeInSelection();
@@ -224,7 +225,7 @@ function $onDragStart(event: DragEvent): boolean {
     return false;
   }
   dataTransfer.setData('text/plain', '_');
-  dataTransfer.setDragImage(img, 0, 0);
+  dataTransfer.setDragImage(getDragImage(), 0, 0);
   dataTransfer.setData(
     'application/x-lexical-drag',
     JSON.stringify({

@@ -47,7 +47,7 @@ import {
   SUPPORT_SPEECH_RECOGNITION,
 } from '../SpeechToTextPlugin';
 
-async function sendEditorState(editor: LexicalEditor): Promise<void> {
+async function sendEditorState(editor: LexicalEditor): Promise {
   const stringifiedEditorState = JSON.stringify(editor.getEditorState());
   try {
     await fetch('http://localhost:1235/setEditorState', {
@@ -63,7 +63,7 @@ async function sendEditorState(editor: LexicalEditor): Promise<void> {
   }
 }
 
-async function validateEditorState(editor: LexicalEditor): Promise<void> {
+async function validateEditorState(editor: LexicalEditor): Promise {
   const stringifiedEditorState = JSON.stringify(editor.getEditorState());
   let response = null;
   try {
@@ -85,7 +85,8 @@ async function validateEditorState(editor: LexicalEditor): Promise<void> {
   }
 }
 
-async function shareDoc(doc: SerializedDocument): Promise<void> {
+async function shareDoc(doc: SerializedDocument): Promise {
+  if (typeof window === 'undefined') return;
   const url = new URL(window.location.toString());
   url.hash = await docToHash(doc);
   const newUrl = url.toString();
@@ -123,7 +124,7 @@ export default function ActionsPlugin({
       editor.registerEditableListener((editable) => {
         setIsEditable(editable);
       }),
-      editor.registerCommand<boolean>(
+      editor.registerCommand(
         CONNECTED_COMMAND,
         (payload) => {
           const isConnected = payload;
@@ -369,7 +370,7 @@ function ClearAction({
   showModal,
 }: {
   isEditorEmpty: boolean;
-  showModal: ReturnType<typeof useModal>[1];
+  showModal: ReturnType[1];
 }) {
   const [editor] = useLexicalComposerContext();
 

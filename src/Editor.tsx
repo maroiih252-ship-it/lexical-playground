@@ -80,12 +80,12 @@ import YouTubePlugin from './plugins/YouTubePlugin';
 import ContentEditable from './ui/ContentEditable';
 
 const skipCollaborationInit =
+  typeof window !== 'undefined' &&
+  window.parent != null &&
   // @ts-expect-error
-  window.parent != null && window.parent.frames.right === window;
+  window.parent.frames.right === window;
 
-export type OnEditorStateChangeCallback = Parameters<
-  typeof OnChangePlugin
->[0]['onChange'];
+export type OnEditorStateChangeCallback = Parameters[0]['onChange'];
 
 export type PluginBuilder = (editor: LexicalEditor) => ReactNode;
 
@@ -95,7 +95,7 @@ export type EditorProps = {
   readOnly?: boolean;
   pluginBuilder?: PluginBuilder;
   domMutation?: boolean;
-  toolbarPlugins?: Partial<ToolbarPlugins>;
+  toolbarPlugins?: Partial;
 };
 
 export default function Editor(props: EditorProps): JSX.Element {
@@ -125,15 +125,13 @@ export default function Editor(props: EditorProps): JSX.Element {
   const placeholder = isCollab
     ? 'Enter some collaborative rich text...'
     : isRichText
-    ? 'Enter some rich text...'
-    : 'Enter some plain text...';
-  const [floatingAnchorElem, setFloatingAnchorElem] =
-    useState<HTMLDivElement | null>(null);
-  const [isSmallWidthViewport, setIsSmallWidthViewport] =
-    useState<boolean>(false);
+      ? 'Enter some rich text...'
+      : 'Enter some plain text...';
+  const [floatingAnchorElem, setFloatingAnchorElem] = useState(null);
+  const [isSmallWidthViewport, setIsSmallWidthViewport] = useState(false);
   const [editor] = useLexicalComposerContext();
   const [activeEditor, setActiveEditor] = useState(editor);
-  const [isLinkEditMode, setIsLinkEditMode] = useState<boolean>(false);
+  const [isLinkEditMode, setIsLinkEditMode] = useState(false);
 
   const onRef = (_floatingAnchorElem: HTMLDivElement) => {
     if (_floatingAnchorElem !== null) {
@@ -185,7 +183,7 @@ export default function Editor(props: EditorProps): JSX.Element {
   }, [props.readOnly, editor]);
 
   return (
-    <>
+    <div className="sipas-editor">
       {isRichText && !props.hideToolbar && (
         <ToolbarPlugin
           editor={editor}
@@ -321,6 +319,6 @@ export default function Editor(props: EditorProps): JSX.Element {
         shouldPreserveNewLinesInMarkdown={shouldPreserveNewLinesInMarkdown}
       />
       {showTreeView && <TreeViewPlugin />}
-    </>
+    </div>
   );
 }
