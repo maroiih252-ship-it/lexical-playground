@@ -20,11 +20,13 @@ import {
 } from 'react';
 import {createPortal} from 'react-dom';
 
+import {usePortalContainer} from '../context/PortalContainerContext';
+
 type DropDownContextType = {
-  registerItem: (ref: React.RefObject<HTMLButtonElement>) => void;
+  registerItem: (ref: React.RefObject) => void;
 };
 
-const DropDownContext = React.createContext<DropDownContextType | null>(null);
+const DropDownContext = React.createContext(null);
 
 const dropDownPadding = 4;
 
@@ -36,10 +38,10 @@ export function DropDownItem({
 }: {
   children: React.ReactNode;
   className: string;
-  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: React.MouseEvent) => void;
   title?: string;
 }) {
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef(null);
 
   const dropDownContext = React.useContext(DropDownContext);
 
@@ -51,7 +53,7 @@ export function DropDownItem({
 
   useEffect(() => {
     if (ref && ref.current) {
-      registerItem(ref as React.RefObject<HTMLButtonElement>);
+      registerItem(ref as React.RefObject);
     }
   }, [ref, registerItem]);
 
@@ -73,21 +75,20 @@ function DropDownItems({
   onClose,
 }: {
   children: React.ReactNode;
-  dropDownRef: React.Ref<HTMLDivElement>;
+  dropDownRef: React.Ref;
   onClose: () => void;
 }) {
-  const [items, setItems] = useState<React.RefObject<HTMLButtonElement>[]>();
-  const [highlightedItem, setHighlightedItem] =
-    useState<React.RefObject<HTMLButtonElement>>();
+  const [items, setItems] = useState();
+  const [highlightedItem, setHighlightedItem] = useState();
 
   const registerItem = useCallback(
-    (itemRef: React.RefObject<HTMLButtonElement>) => {
+    (itemRef: React.RefObject) => {
       setItems((prev) => (prev ? [...prev, itemRef] : [itemRef]));
     },
     [setItems],
   );
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent) => {
     if (!items) {
       return;
     }
@@ -161,9 +162,10 @@ export default function DropDown({
   children: ReactNode;
   stopCloseOnClickSelf?: boolean;
 }): JSX.Element {
-  const dropDownRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLButtonElement>(null);
+  const dropDownRef = useRef(null);
+  const buttonRef = useRef(null);
   const [showDropDown, setShowDropDown] = useState(false);
+  const portalContainer = usePortalContainer();
 
   const handleClose = () => {
     setShowDropDown(false);
@@ -266,7 +268,7 @@ export default function DropDown({
           <DropDownItems dropDownRef={dropDownRef} onClose={handleClose}>
             {children}
           </DropDownItems>,
-          document.body,
+          portalContainer,
         )}
     </>
   );
